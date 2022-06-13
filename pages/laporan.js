@@ -18,6 +18,13 @@ export const Laporan = () => {
             <p>
               Tolong dong, ini halte banyak coretan dan kaca banyak yang pecah
             </p>
+            <a
+              className="text-indigo-500 flex justify-end"
+              href="http://maps.google.com/maps?q="
+              target="_blank"
+            >
+              Lihat lokasi
+            </a>
             <div className="border border-t border-black border-opacity-20 mt-4 mb-3" />
 
             <div class="card-actions flex items-center justify-start mt-4">
@@ -36,7 +43,7 @@ export const Laporan = () => {
                   <div className="w-5 sm:w-5 ml-1">
                     <img
                       className="rounded-full"
-                      src="/assets/images/hunter.png"
+                      src="/assets/badge/hunter.png"
                       width="60"
                       height="60"
                     />
@@ -45,10 +52,10 @@ export const Laporan = () => {
               </div>
             </div>
             <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 mt-6">
-              <button className="px-6 py-2 text-white bg-red-700 rounded-3xl">
+              <button className="px-6 py-2 text-white bg-red-600 rounded-3xl">
                 Tolak
               </button>
-              <button className="px-3 py-2 text-white bg-green-600 rounded-3xl">
+              <button className="px-3 py-2 text-white bg-green-500 rounded-3xl">
                 Verifikasi
               </button>
             </div>

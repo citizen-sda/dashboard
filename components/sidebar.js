@@ -50,13 +50,13 @@ const Sidebar = ({ children }) => {
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <label for="my-drawer" className=" drawer-button absolute right-0">
-              <IoMdClose className="sm:text-4xl text-4xl text-gray-900 mx-4 m-2 sm:m-6" />
+              <IoMdClose className="sm:text-4xl text-4xl text-gray-900 mx-4 m-2 sm:m-6 sm:my-8" />
             </label>
             <div className=" my-20">
               {navbar.map((item) => (
                 <li>
                   <Link href={item.url}>
-                    <a className="sm:text-2xl text-3xl">{item.name}</a>
+                    <a className="text-2xl sm:text-3xl">{item.name}</a>
                   </Link>
                 </li>
               ))}
