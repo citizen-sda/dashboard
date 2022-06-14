@@ -4,7 +4,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#8E2DE2',
+        secondary: '#263238',
+      },
+    },
   },
   daisyui: {
     themes: false,

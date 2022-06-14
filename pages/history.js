@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Laporan = () => {
+export const History = () => {
   return (
     <div className="grid sm:grid-cols-2  xl:grid-cols-4 grid-cols-1 gap-10">
       <div className="flex justify-center sm:justify-right">
@@ -11,8 +11,8 @@ export const Laporan = () => {
           <div class="card-body">
             <h2 class="card-title">
               Halte Keramean
-              <div class="px-3 py-1 bg-purple-500 text-xs text-white rounded-xl">
-                Ditinjau
+              <div class="px-3 py-1 bg-green-500 text-xs text-white rounded-xl">
+                Diverifikasi
               </div>
             </h2>
             <p>
@@ -51,12 +51,9 @@ export const Laporan = () => {
                 </div>
               </div>
             </div>
-            <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 mt-6">
-              <button className="px-6 py-2 text-white bg-red-600 rounded-3xl">
-                Tolak
-              </button>
-              <button className="px-3 py-2 text-white bg-green-500 rounded-3xl">
-                Verifikasi
+            <div className="grid mt-6">
+              <button className="px-6 py-2 text-white bg-yellow-400 hover:bg-yellow-300 rounded-3xl">
+                Tinjau Ulang
               </button>
             </div>
           </div>
@@ -66,4 +63,4 @@ export const Laporan = () => {
   );
 };
 
-export default Laporan;
+export default History;

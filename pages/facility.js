@@ -1,17 +1,18 @@
 import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
-export const Badge = () => {
+export const Facility = () => {
   return (
     <div class="overflow-x-auto">
       <table class="table table-zebra w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>
-            <th>ID Badge</th>
+            <th>ID Facility</th>
             <th>Name</th>
-            <th>Description</th>
-            <th>Requirement</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Category</th>
             <th className="flex justify-end">
               <IoMdAdd className="text-2xl" />
             </th>
@@ -20,10 +21,11 @@ export const Badge = () => {
         <tbody>
           {/* <!-- row 1 --> */}
           <tr>
-            <th>20001</th>
-            <th>Trial</th>
-            <td>Pengguna yang baru mendaftar.</td>
-            <td>0</td>
+            <th>41001</th>
+            <td>Alun-Alun Sidoarjo</td>
+            <td>-7.445954316021162</td>
+            <td>112.71776955433619</td>
+            <td>Taman</td>
             <td>
               <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
                 edit
@@ -35,13 +37,11 @@ export const Badge = () => {
           </tr>
           {/* <!-- row 2 --> */}
           <tr>
-            <th>20002</th>
-            <th>Hunter</th>
-            <td>
-              Lencana ini diberikan kepada mereka yang mau memulai petualangan
-              pencarian fasilitas umum, yang mengalami kerusakan.
-            </td>
-            <td>5</td>
+            <th>41002</th>
+            <td>Taman APKASI</td>
+            <td>-7.537348480289772</td>
+            <td>112.70083801090094</td>
+            <td>Taman</td>
             <td>
               <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
                 edit
@@ -53,13 +53,11 @@ export const Badge = () => {
           </tr>
           {/* <!-- row 3 --> */}
           <tr>
-            <th>20003</th>
-            <th>Master</th>
-            <td>
-              Pengguna yang telah konsisten dalam menambahkan laporan, dan ingin
-              membantu orang lain.
-            </td>
-            <td>19</td>
+            <th>42001</th>
+            <td>Halte Keramean</td>
+            <td>-7.492537167945791</td>
+            <td>112.71091306363122</td>
+            <td>Halte</td>
             <td>
               <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
                 edit
@@ -75,4 +73,4 @@ export const Badge = () => {
   );
 };
 
-export default Badge;
+export default Facility;
