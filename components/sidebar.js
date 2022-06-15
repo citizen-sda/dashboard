@@ -7,9 +7,9 @@ import { useRouter } from 'next/router';
 const navbar = [
   { name: 'Statistic', url: '/dashboard' },
   { name: 'Report', url: '/report' },
+  { name: 'History', url: '/history' },
   { name: 'Facility', url: '/facility' },
   { name: 'Badge', url: '/badge' },
-  { name: 'History', url: '/history' },
 ];
 
 const Sidebar = ({ children }) => {
@@ -18,7 +18,7 @@ const Sidebar = ({ children }) => {
     <>
       <div class="drawer">
         <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content bg-gray-200">
+        <div class="drawer-content bg-gray-100">
           {/* Navbar */}
           <div className="flex justify-between items-center h-20 bg-white">
             <div className="flex justify-start items-center">
@@ -33,11 +33,11 @@ const Sidebar = ({ children }) => {
                 <img className="rounded-full" src="/assets/images/profil.jpg" />
               </div>
               {/* Nama Admin */}
-              <div className="text-md sm:hidden block sm:text-lg font-semibold ml-2 sm:ml-4 mr-8">
+              <div className="text-md sm:hidden block sm:text-lg font-semibold ml-2 sm:ml-3 mr-8">
                 {'Ananda Prasetyo'.split(' ')[0]}
               </div>
-              <div className="text-md hidden sm:block sm:text-lg font-semibold ml-2 sm:ml-4 mr-8">
-                {'Ananda Dwi Prasetyo'}
+              <div className="text-md hidden sm:block sm:text-lg font-semibold ml-2 sm:ml-3 mr-8">
+                {'Ananda Prasetyo'}
               </div>
             </div>
           </div>
