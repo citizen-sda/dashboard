@@ -27,17 +27,33 @@ const Sidebar = ({ children }) => {
                 <GiHamburgerMenu className="sm:text-2xl text-xl text-gray-900 m-4 sm:m-8" />
               </label>
             </div>
-            {/* Foto Profil */}
             <div className="flex items-center">
-              <div className="w-6 sm:w-8">
-                <img className="rounded-full" src="/assets/images/profil.jpg" />
-              </div>
               {/* Nama Admin */}
-              <div className="text-md sm:hidden block sm:text-lg font-semibold ml-2 sm:ml-3 mr-8">
+              <div className="text-md sm:hidden block sm:text-lg font-semibold ml-2 sm:ml-3 sm:mr-2 mr-1">
                 {'Ananda Prasetyo'.split(' ')[0]}
               </div>
-              <div className="text-md hidden sm:block sm:text-lg font-semibold ml-2 sm:ml-3 mr-8">
+              <div className="text-md hidden sm:block sm:text-lg font-semibold ml-2 sm:ml-3 sm:mr-2 mr-1">
                 {'Ananda Prasetyo'}
+              </div>
+
+              {/* Foto Profil */}
+              <div className="dropdown dropdown-end">
+                <label
+                  tabindex="0"
+                  className="btn btn-ghost btn-circle avatar sm:mr-8 mr-6"
+                >
+                  <div className="w-8 rounded-full">
+                    <img src="/assets/images/profil.jpg" />
+                  </div>
+                </label>
+                <ul
+                  tabindex="0"
+                  className="menu menu-compact dropdown-content mt-5 mr-5 p-2 shadow bg-base-100 rounded-box"
+                >
+                  <li>
+                    <a>Logout</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

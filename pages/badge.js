@@ -4,7 +4,7 @@ import { IoMdAdd } from 'react-icons/io';
 export const Badge = () => {
   return (
     <div class="overflow-x-auto">
-      <table class="table table-zebra w-full">
+      <table class="table table-zebra w-full border border-black border-opacity-10">
         {/* <!-- head --> */}
         <thead>
           <tr>
