@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 import Image from '../components/image';
 
 // This gets called on every request
@@ -17,9 +15,8 @@ export async function getServerSideProps() {
 }
 
 export const History = ({ data }) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    // card
+    // Card
     <div className="grid sm:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
       {/* Filter Status Diverifikasi */}
       {data.data
@@ -31,7 +28,6 @@ export const History = ({ data }) => {
           >
             <div className="card w-96 bg-base-100 shadow-xl">
               {/* Gambar Laporan / Fasilitas */}
-
               <Image src={item.image} className="w-96 h-60 object-cover" />
               {/* Nama, status, dan deskripsi laporan */}
               <div className="card-body">

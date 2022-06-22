@@ -15,9 +15,8 @@ export async function getServerSideProps() {
 }
 
 export const Report = ({ data }) => {
-  console.log(data.data);
   return (
-    // card
+    // Card
     <div className="grid sm:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
       {/* Filter Status Diverifikasi */}
       {data.data

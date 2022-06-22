@@ -1,7 +1,21 @@
+import { itMatchesOne } from 'daisyui/src/lib/postcss-prefixer/utils';
 import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
-export const Facility = () => {
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(
+    `https://k4b978r7ldkv68nte2cz.sycwell.xyz/api/facility`
+  );
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+}
+
+export const Facility = ({ data }) => {
+  console.log(data);
   return (
     <div class="overflow-x-auto">
       <table class="table table-zebra w-full border border-black border-opacity-10">
@@ -20,53 +34,23 @@ export const Facility = () => {
         </thead>
         <tbody>
           {/* <!-- row 1 --> */}
-          <tr>
-            <th>41001</th>
-            <td>Alun-Alun Sidoarjo</td>
-            <td>-7.445954316021162</td>
-            <td>112.71776955433619</td>
-            <td>Taman</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
-          {/* <!-- row 2 --> */}
-          <tr>
-            <th>41002</th>
-            <td>Taman APKASI</td>
-            <td>-7.537348480289772</td>
-            <td>112.70083801090094</td>
-            <td>Taman</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
-          {/* <!-- row 3 --> */}
-          <tr>
-            <th>42001</th>
-            <td>Halte Keramean</td>
-            <td>-7.492537167945791</td>
-            <td>112.71091306363122</td>
-            <td>Halte</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
+          {data.map((item) => (
+            <tr>
+              <th>{item.id_facility}</th>
+              <td>{item.name}</td>
+              <td>{item.latitude}</td>
+              <td>{item.longitude}</td>
+              <td>{item.category.name}</td>
+              <td>
+                <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
+                  edit
+                </button>
+                <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
+                  delete
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
