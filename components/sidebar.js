@@ -1,15 +1,18 @@
 import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose, IoMdStats } from 'react-icons/io';
+import { RiHistoryFill } from 'react-icons/ri';
+import { MdOutlineReportProblem, MdOutlineBadge } from 'react-icons/md';
+import { RiBuildingLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const navbar = [
-  { name: 'Statistic', url: '/dashboard' },
-  { name: 'Report', url: '/report' },
-  { name: 'History', url: '/history' },
-  { name: 'Facility', url: '/facility' },
-  { name: 'Badge', url: '/badge' },
+  { name: 'Statistic', url: '/dashboard', icon: <IoMdStats /> },
+  { name: 'Report', url: '/report', icon: <MdOutlineReportProblem /> },
+  { name: 'History', url: '/history', icon: <RiHistoryFill /> },
+  { name: 'Facility', url: '/facility', icon: <RiBuildingLine /> },
+  { name: 'Badge', url: '/badge', icon: <MdOutlineBadge /> },
 ];
 
 const Sidebar = ({ children }) => {
@@ -70,15 +73,19 @@ const Sidebar = ({ children }) => {
             </label>
             {/* Url Path Name */}
             <div className=" my-20">
-              {navbar.map((item) => (
-                <li>
+              {navbar.map((item, index) => (
+                <li key={index} className="my-5 flex">
                   <Link href={item.url}>
                     {router.asPath == item.url ? (
                       <a className="text-2xl sm:text-3xl text-white bg-primary">
+                        <div className="text-white">{item.icon}</div>
                         {item.name}
                       </a>
                     ) : (
-                      <a className="text-2xl sm:text-3xl">{item.name}</a>
+                      <a className="text-2xl sm:text-3xl">
+                        <div className="text-black">{item.icon}</div>{' '}
+                        {item.name}
+                      </a>
                     )}
                   </Link>
                 </li>
