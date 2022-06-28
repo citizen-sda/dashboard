@@ -1,13 +1,12 @@
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import Image from '../components/image';
+import toast from 'react-hot-toast';
 
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(
-    `https://k4b978r7ldkv68nte2cz.sycwell.xyz/api/report`
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/report`);
   const data = await res.json();
 
   // Pass data to the page via props
@@ -15,11 +14,46 @@ export async function getServerSideProps() {
 }
 
 export const Report = ({ data }) => {
+  const [report, setReport] = React.useState(data.data);
+  const [isOpen, setIsOpen] = React.useState(false);
+  // Update Status Laporan (verifikasi)
+  const handleUpdate = async (id_report) => {
+    const response = await fetch('/api/report', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id_report: id_report,
+        status: 'Diverifikasi',
+      }),
+    });
+    const result = await response.json();
+    if (result) {
+      setReport(report.filter((item) => item.id_report != id_report));
+      toast.success('Berhasil!');
+    }
+  };
+
+  // Hapus Laporan
+  const handleDelete = async (id_report) => {
+    const response = await fetch('/api/report', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id_report: id_report,
+      }),
+    });
+    const result = await response.json();
+    if (result) {
+      setReport(report.filter((item) => item.id_report != id_report));
+      toast.success('Terhapus');
+    }
+  };
+
   return (
     // Card
     <div className="grid sm:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
       {/* Filter Status Diverifikasi */}
-      {data.data
+      {report
         .filter((item) => item.status === 'Ditinjau')
         .map((item) => (
           <div
@@ -82,12 +116,55 @@ export const Report = ({ data }) => {
                     </div>
                   </div>
                 </div>
+
                 {/* Tombol Respon */}
                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 mt-6">
-                  <button className="px-6 py-2 text-white bg-red-700 hover:bg-red-500 rounded-3xl">
-                    Tolak
+                  {/* Tombol Hapus */}
+                  <button
+                    onClick={() => setIsOpen(true)}
+                    className="btn modal-button px-6 py-2 text-white bg-red-700 hover:bg-red-500 rounded-3xl capitalize"
+                  >
+                    Hapus
                   </button>
-                  <button className="px-3 py-2 text-white bg-green-700 hover:bg-green-500 rounded-3xl">
+
+                  {/* Pop Up Modal */}
+                  <input
+                    type="checkbox"
+                    id="my-modal"
+                    className="modal-toggle"
+                  />
+                  <div className={`${isOpen ? 'modal-open' : ''} modal`}>
+                    <div className="modal-box">
+                      <h3 className="font-bold text-lg">Hapus laporan?</h3>
+                      <p className="py-4">
+                        Pastikan telah memeriksa laporan dengan teliti, karena
+                        laporan yang terhapus tidak akan bisa dikembalikan.
+                      </p>
+                      <div className="modal-action">
+                        <button
+                          onClick={() => {
+                            handleDelete(item.id_report);
+                            setIsOpen(false);
+                          }}
+                          className="btn"
+                        >
+                          YA
+                        </button>
+                        <button
+                          onClick={() => setIsOpen(false)}
+                          className="btn btn-error"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tombol Verifikasi */}
+                  <button
+                    onClick={() => handleUpdate(item.id_report)}
+                    className="px-3 py-2 text-white bg-green-700 hover:bg-green-500 rounded-3xl"
+                  >
                     Verifikasi
                   </button>
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import Image from '../components/image';
+import toast from 'react-hot-toast';
 
 // This gets called on every request
 export async function getServerSideProps() {
@@ -15,11 +16,30 @@ export async function getServerSideProps() {
 }
 
 export const History = ({ data }) => {
+  const [history, setHistory] = React.useState(data.data);
+  const [isOpen, setIsOpen] = React.useState(false);
+  // Update Status Laporan (verifikasi)
+  const handleUpdate = async (id_report) => {
+    const response = await fetch('/api/report', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id_report: id_report,
+        status: 'Ditinjau',
+      }),
+    });
+    const result = await response.json();
+    if (result) {
+      setHistory(history.filter((item) => item.id_report != id_report));
+      toast.success('Berhasil!');
+    }
+  };
+
   return (
     // Card
     <div className="grid sm:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
       {/* Filter Status Diverifikasi */}
-      {data.data
+      {history
         .filter((item) => item.status === 'Diverifikasi')
         .map((item) => (
           <div
@@ -33,7 +53,7 @@ export const History = ({ data }) => {
               <div className="card-body">
                 <h2 className="card-title">
                   {item.name}
-                  <div class="px-3 py-1 mt-1 bg-green-700 text-xs text-white rounded-xl">
+                  <div className="px-3 py-1 mt-1 bg-green-700 text-xs text-white rounded-xl">
                     {item.status}
                   </div>
                 </h2>
@@ -85,7 +105,13 @@ export const History = ({ data }) => {
 
                 {/* Tombol Tinjau Ulang */}
                 <div className="grid mt-6">
-                  <button className="px-6 py-2 text-white bg-primary hover:bg-gray-600 rounded-3xl">
+                  <button
+                    onClick={() => {
+                      setIsOpen(true);
+                      handleUpdate(item.id_report);
+                    }}
+                    className="px-6 py-2 text-white bg-primary hover:bg-gray-600 rounded-3xl"
+                  >
                     Tinjau Ulang
                   </button>
                 </div>

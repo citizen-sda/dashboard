@@ -1,10 +1,21 @@
 import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
-export const Badge = () => {
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://k4b978r7ldkv68nte2cz.sycwell.xyz/api/badge`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+}
+
+export const Badge = ({ data }) => {
+  console.log(data);
   return (
-    <div class="overflow-x-auto">
-      <table class="table table-zebra w-full border border-black border-opacity-10">
+    <div className="overflow-x-auto">
+      <table className="table table-zebra w-full border border-black border-opacity-10">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -19,56 +30,22 @@ export const Badge = () => {
         </thead>
         <tbody>
           {/* <!-- row 1 --> */}
-          <tr>
-            <th>20001</th>
-            <th>Trial</th>
-            <td>Pengguna yang baru mendaftar.</td>
-            <td>0</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
-          {/* <!-- row 2 --> */}
-          <tr>
-            <th>20002</th>
-            <th>Hunter</th>
-            <td>
-              Lencana ini diberikan kepada mereka yang mau memulai petualangan
-              pencarian fasilitas umum, yang mengalami kerusakan.
-            </td>
-            <td>5</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
-          {/* <!-- row 3 --> */}
-          <tr>
-            <th>20003</th>
-            <th>Master</th>
-            <td>
-              Pengguna yang telah konsisten dalam menambahkan laporan, dan ingin
-              membantu orang lain.
-            </td>
-            <td>19</td>
-            <td>
-              <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
-                edit
-              </button>
-              <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
-                delete
-              </button>
-            </td>
-          </tr>
+          {data.map((item) => (
+            <tr key={item.id_badgelist}>
+              <th>{item.id_badgelist}</th>
+              <th>{item.name}</th>
+              <td>{item.description}</td>
+              <td>{item.requirement}</td>
+              <td>
+                <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
+                  edit
+                </button>
+                <button className="btn btn-ghost btn-md text-white bg-red-700 m-1">
+                  delete
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

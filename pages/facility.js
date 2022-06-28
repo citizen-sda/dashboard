@@ -1,4 +1,3 @@
-import { itMatchesOne } from 'daisyui/src/lib/postcss-prefixer/utils';
 import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
@@ -15,7 +14,6 @@ export async function getServerSideProps() {
 }
 
 export const Facility = ({ data }) => {
-  console.log(data);
   return (
     <div class="overflow-x-auto">
       <table class="table table-zebra w-full border border-black border-opacity-10">
@@ -35,7 +33,7 @@ export const Facility = ({ data }) => {
         <tbody>
           {/* <!-- row 1 --> */}
           {data.map((item) => (
-            <tr>
+            <tr key={item.id_facility}>
               <th>{item.id_facility}</th>
               <td>{item.name}</td>
               <td>{item.latitude}</td>

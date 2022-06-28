@@ -19,14 +19,14 @@ const Sidebar = ({ children }) => {
   const router = useRouter();
   return (
     <>
-      <div class="drawer">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content bg-gray-100">
+      <div className="drawer">
+        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content bg-gray-100">
           {/* Navbar */}
           <div className="flex justify-between items-center h-20 bg-white">
             <div className="flex justify-start items-center">
               {/* Hamburger Menu */}
-              <label for="my-drawer" className=" drawer-button m-4">
+              <label htmlFor="my-drawer" className=" drawer-button m-4">
                 <GiHamburgerMenu className="sm:text-2xl text-xl text-gray-900 m-4 sm:m-8" />
               </label>
             </div>
@@ -42,7 +42,7 @@ const Sidebar = ({ children }) => {
               {/* Foto Profil */}
               <div className="dropdown dropdown-end">
                 <label
-                  tabindex="0"
+                  tabIndex="0"
                   className="btn btn-ghost btn-circle avatar sm:mr-8 mr-6"
                 >
                   <div className="w-8 rounded-full">
@@ -50,7 +50,7 @@ const Sidebar = ({ children }) => {
                   </div>
                 </label>
                 <ul
-                  tabindex="0"
+                  tabIndex="0"
                   className="menu menu-compact dropdown-content mt-5 mr-5 p-2 shadow bg-base-100 rounded-box"
                 >
                   <li>
@@ -64,11 +64,14 @@ const Sidebar = ({ children }) => {
           {children}
         </div>
         {/* Sidebar */}
-        <div class="drawer-side">
-          <label for="my-drawer" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+        <div className="drawer-side">
+          <label htmlFor="my-drawer" className="drawer-overlay"></label>
+          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
             {/* Tombol Close */}
-            <label for="my-drawer" className=" drawer-button absolute right-0">
+            <label
+              htmlFor="my-drawer"
+              className=" drawer-button absolute right-0"
+            >
               <IoMdClose className="sm:text-4xl text-4xl text-gray-900 mx-4 m-2 sm:m-6 sm:my-8" />
             </label>
             {/* Url Path Name */}
