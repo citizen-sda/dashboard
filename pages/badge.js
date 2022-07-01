@@ -44,7 +44,7 @@ export const Badge = ({ data }) => {
             placeholder="10"
             className="input input-bordered w-full mt-1 focus:outline-none"
           />
-          <p className="text-md mt-4">URL Gambar</p>
+          <p className="text-md mt-4">Image</p>
           <input
             type="text"
             placeholder="https://raw.githubusercontent.com/"
@@ -83,6 +83,7 @@ export const Badge = ({ data }) => {
               <th>Name</th>
               <th>Description</th>
               <th>Requirement</th>
+              <th>Image</th>
               <th className="flex justify-end">
                 <button onClick={() => setIsOpen(true)}>
                   <IoMdAdd className="text-2xl" />
@@ -98,6 +99,7 @@ export const Badge = ({ data }) => {
                 <th>{item.name}</th>
                 <td>{item.description}</td>
                 <td>{item.requirement}</td>
+                <td>{item.image}</td>
                 <td>
                   <button className="btn btn-ghost btn-md text-white bg-green-700 m-1">
                     edit
