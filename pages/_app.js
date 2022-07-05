@@ -16,7 +16,13 @@ function MyApp({ Component, pageProps, ...appProps }) {
     }
   }, []);
 
-  if (router.pathname == '/') return <Component {...pageProps} />;
+  if (router.pathname == '/')
+    return (
+      <>
+        <Toaster />
+        <Component {...pageProps} />
+      </>
+    );
 
   return (
     <>

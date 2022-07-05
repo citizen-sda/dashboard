@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import supabase from '../lib/supabase';
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 export const Index = () => {
   const router = useRouter();
@@ -24,9 +25,13 @@ export const Index = () => {
     try {
       setLoading(true);
       const { user, session, error } = await supabase.auth.signIn(form);
-      if (error) throw error;
+      if (error) {
+        throw error;
+      } else {
+        toast.success('Check your email');
+      }
     } catch (error) {
-      alert(error.error_description || error.message);
+      toast.error(error.error_description || error.message);
     } finally {
       setLoading(false);
     }

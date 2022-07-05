@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdClose, IoMdStats } from 'react-icons/io';
 import { RiHistoryFill } from 'react-icons/ri';
@@ -7,6 +7,7 @@ import { RiBuildingLine } from 'react-icons/ri';
 import Link from 'next/link';
 import supabase from '../lib/supabase';
 import { useRouter } from 'next/router';
+import { data } from 'autoprefixer';
 
 const navbar = [
   { name: 'Statistic', url: '/dashboard', icon: <IoMdStats /> },
@@ -17,6 +18,21 @@ const navbar = [
 ];
 
 const Sidebar = ({ children }) => {
+  const [user, setUser] = useState(supabase.auth.user());
+  const [userMeta, setUserMeta] = useState({ name: '', email: '', avatar: '' });
+
+  React.useEffect(async () => {
+    const { data, error } = await supabase
+      .from('admin')
+      .select('*')
+      .match({ email: user.email })
+      .single();
+
+    setUserMeta(data);
+  }, []);
+
+  console.log(user);
+
   const router = useRouter();
   return (
     <>
@@ -33,11 +49,12 @@ const Sidebar = ({ children }) => {
             </div>
             <div className="flex items-center">
               {/* Nama Admin */}
+
               <div className="text-md sm:hidden block sm:text-lg font-semibold ml-2 sm:ml-3 sm:mr-2 mr-1">
-                {'Ananda Prasetyo'.split(' ')[0]}
+                {userMeta.name.split(' ')[0]}
               </div>
               <div className="text-md hidden sm:block sm:text-lg font-semibold ml-2 sm:ml-3 sm:mr-2 mr-1">
-                {'Ananda Prasetyo'}
+                {userMeta.name}
               </div>
 
               {/* Foto Profil */}
@@ -47,7 +64,7 @@ const Sidebar = ({ children }) => {
                   className="btn btn-ghost btn-circle avatar sm:mr-8 mr-6"
                 >
                   <div className="w-8 rounded-full">
-                    <img src="/assets/images/profil.jpg" />
+                    <img src={userMeta.avatar} />
                   </div>
                 </label>
                 <ul
