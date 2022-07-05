@@ -56,6 +56,7 @@ const Sidebar = ({ children }) => {
                 >
                   <li>
                     <button
+                      className="hover:bg-white"
                       onClick={async () => {
                         await supabase.auth.signOut();
                         router.reload();
