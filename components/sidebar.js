@@ -5,6 +5,7 @@ import { RiHistoryFill } from 'react-icons/ri';
 import { MdOutlineReportProblem, MdOutlineBadge } from 'react-icons/md';
 import { RiBuildingLine } from 'react-icons/ri';
 import Link from 'next/link';
+import supabase from '../lib/supabase';
 import { useRouter } from 'next/router';
 
 const navbar = [
@@ -54,7 +55,14 @@ const Sidebar = ({ children }) => {
                   className="menu menu-compact dropdown-content mt-5 mr-5 p-2 shadow bg-base-100 rounded-box"
                 >
                   <li>
-                    <a>Logout</a>
+                    <button
+                      onClick={async () => {
+                        await supabase.auth.signOut();
+                        router.reload();
+                      }}
+                    >
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </div>
