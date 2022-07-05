@@ -25,7 +25,7 @@ const Sidebar = ({ children }) => {
     const { data, error } = await supabase
       .from('admin')
       .select('*')
-      .match({ email: user.email })
+      .match({ email: user.email || null })
       .single();
 
     setUserMeta(data);
@@ -76,7 +76,7 @@ const Sidebar = ({ children }) => {
                       className="hover:bg-white"
                       onClick={async () => {
                         await supabase.auth.signOut();
-                        router.reload();
+                        router.push('/');
                       }}
                     >
                       Logout
