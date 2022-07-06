@@ -120,6 +120,7 @@ export const Facility = ({ data }) => {
 
   return (
     <>
+      <title>Facility — Citizen</title>
       {/* Pop Up Modal Add */}
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className={`${isOpenAdd ? 'modal-open' : ''} modal`}>

@@ -62,6 +62,7 @@ export const Report = ({ data }) => {
 
   return (
     <>
+      <title>Report — Citizen</title>
       {/* Search Bar */}
       <div className="relative mb-4 w-full">
         <input

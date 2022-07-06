@@ -39,6 +39,7 @@ export const Index = () => {
 
   return (
     <>
+      <title>Welcome to Citizen!</title>
       <div className="bg-gray-100 h-screen">
         <div className="flex justify-center">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-md bg-base-100 mt-24">

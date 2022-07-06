@@ -19,22 +19,25 @@ export async function getServerSideProps() {
 
 const Dashboard = ({ data }) => {
   return (
-    <main>
-      <div className="grid sm:grid-cols-2  xl:grid-cols-4 grid-cols-1 gap-10">
-        <StatisticCard title="User Aktif" count={data.total_user}>
-          <IoHappyOutline className="text-5xl text-white p-2 bg-yellow-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
-        </StatisticCard>
-        <StatisticCard title="Ditinjau" count={data.total_ditinjau}>
-          <IoSync className="text-5xl text-white p-2 bg-gray-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
-        </StatisticCard>
-        <StatisticCard title="Diverifikasi" count={data.total_diverifikasi}>
-          <IoCheckmarkCircleOutline className="text-5xl text-white p-2 bg-green-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
-        </StatisticCard>
-        <StatisticCard title="Total Laporan" count={data.total_report}>
-          <IoListCircleOutline className="text-5xl text-white p-2 bg-blue-400 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
-        </StatisticCard>
-      </div>
-    </main>
+    <>
+      <title>Dashboard — Citizen</title>
+      <main>
+        <div className="grid sm:grid-cols-2  xl:grid-cols-4 grid-cols-1 gap-10">
+          <StatisticCard title="User Aktif" count={data.total_user}>
+            <IoHappyOutline className="text-5xl text-white p-2 bg-yellow-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
+          </StatisticCard>
+          <StatisticCard title="Ditinjau" count={data.total_ditinjau}>
+            <IoSync className="text-5xl text-white p-2 bg-gray-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
+          </StatisticCard>
+          <StatisticCard title="Diverifikasi" count={data.total_diverifikasi}>
+            <IoCheckmarkCircleOutline className="text-5xl text-white p-2 bg-green-500 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
+          </StatisticCard>
+          <StatisticCard title="Total Laporan" count={data.total_report}>
+            <IoListCircleOutline className="text-5xl text-white p-2 bg-blue-400 rounded-full mx-auto sm:mx-0 m-4 sm:m-0" />
+          </StatisticCard>
+        </div>
+      </main>
+    </>
   );
 };
 

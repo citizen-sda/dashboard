@@ -44,6 +44,7 @@ export const History = ({ data }) => {
 
   return (
     <>
+      <title>History — Citizen</title>
       {/* Search Bar */}
       <div className="relative mb-4 w-full">
         <input

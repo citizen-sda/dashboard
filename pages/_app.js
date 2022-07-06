@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
 
   return (
     <>
-      <Sidebar>
+      <Sidebar key={router.pathname}>
         <Toaster />
         <div className="sm:px-16 px-6 sm:py-16 py-6 bg-gray-100">
           <Component {...pageProps} />
