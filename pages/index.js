@@ -45,7 +45,10 @@ export const Index = () => {
           <div className="card flex-shrink-0 w-full max-w-sm shadow-md bg-base-100 mt-24">
             <div className="card-body">
               <div className="flex justify-center m-8">
-                <img src="/assets/images/citizen.png" width="100px" />
+                <img
+                  src="https://res.cloudinary.com/sycwell/image/upload/c_limit%2Cf_auto%2Cfl_progressive%2Cq_75%2Cw_200/citizen_lt87zl.webp"
+                  width="100px"
+                />
               </div>
               <div className="form-control">
                 <label className="label"></label>
