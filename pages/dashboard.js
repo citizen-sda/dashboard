@@ -17,7 +17,7 @@ export async function getServerSideProps() {
   return { props: { data } };
 }
 
-const Dashboard = () => {
+const Dashboard = ({ data }) => {
   return (
     <main>
       <div className="grid sm:grid-cols-2  xl:grid-cols-4 grid-cols-1 gap-10">
