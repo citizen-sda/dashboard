@@ -25,13 +25,11 @@ const Sidebar = ({ children }) => {
     const { data, error } = await supabase
       .from('admin')
       .select('*')
-      .match({ email: user.email || null })
+      .match({ email: user.email })
       .single();
 
     setUserMeta(data);
   }, []);
-
-  console.log(user);
 
   const router = useRouter();
   return (
