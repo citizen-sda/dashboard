@@ -66,7 +66,7 @@ export const Index = () => {
                     e.preventDefault();
                     handleLogin(form);
                   }}
-                  className="btn bg-primary w-full"
+                  className="btn border-0 bg-primary w-full"
                   disabled={loading}
                 >
                   <span>{loading ? 'Loading' : 'login'}</span>
